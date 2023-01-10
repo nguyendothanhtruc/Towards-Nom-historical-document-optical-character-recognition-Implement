@@ -1,0 +1,36 @@
+MODEL_NAME: final_demo
+
+OCR_FOLDER: /content/gdrive/MyDrive/Intro_NLP/Code/OCR
+DATA_FOLDER: /content/gdrive/MyDrive/Intro_NLP/Code/OCR/data
+
+YOLO_TEST_RESULTS_PATH: "{DATA_FOLDER}/yolov5_results"
+YOLO_TEST_LABELS_PATH: "{DATA_FOLDER}/yolov5_results/labels"
+YOLO_TEST_CROPS_PATH: "{DATA_FOLDER}/yolov5_results/crops"
+        
+RESNET_PATH: "{DATA_FOLDER}/resnet101_model.h5"
+
+WEIGHT_CORRECT: 0.97
+MACBERT_CKPT_FOLDER: "{DATA_FOLDER}/macbert_ckpt"
+MACBERT_CKPT: "{DATA_FOLDER}/macbert_ckpt/epoch=104-val_loss=0.19-val_avg_f1=0.980.ckpt"
+
+INPUT_SHAPE: 224
+THRESHOLD: 0_01
+TOP_K: 3
+
+LVT_TEST: "/content/gdrive/MyDrive/Intro_NLP/Code/OCR/data/Dataset/Luc-Van-Tien"
+DATA_PATH: "{LVT_TEST}/images"
+TRAIN_DS_PATH: "{LVT_TEST}/train_cls.csv"
+GT_DS_PATH: "{LVT_TEST}/annotation.csv"
+
+BENCHMARK_ONLY: 0
+BENCHMARK_PATH_MB: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withMB"
+GT_PATH_MB: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withMB/groundtruths"
+DT_PATH_MB: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withMB/detections"
+RESULT_PATH_MB: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withMB/results"
+RESULT_OCR_PATH_MB: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withMB/results_OCR"
+
+BENCHMARK_PATH: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withoutMB"
+GT_PATH: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withoutMB/groundtruths"
+DT_PATH: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withoutMB/detections"
+RESULT_PATH: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withoutMB/results"
+RESULT_OCR_PATH: "{OCR_FOLDER}/benchmark/{MODEL_NAME}/withoutMB/results_OCR"
