@@ -70,8 +70,8 @@ Although we don't have enough data like the paper, a very close [mAP@0.5](https:
 
 | mAP@0.5           | OCR | Language model        | 
 | ----------------- | -------------- | --------------- |
-| Our model         | 0.69 - 0.71    | ±≈0.05          | 
-| Paper             | ≈0.73          | 0.82            | 
+| Our model         | 69 - 71        | ± ≈0.5          | 
+| Paper             | 72.96          | 82.36            | 
 
 ## Result
 
