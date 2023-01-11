@@ -5,19 +5,39 @@ As the paper doesn't give implementation detail of language model used in the po
 
 _This is a project for an Introduction to Natural Language Processing class. View our [slides](Group04_Slides.pdf) in Vietnamese._ 
 
+## Model Architecture
+
+OCR:
+* Detection model: `YOLOv5`
+* Classification model: `Resner101`
+
+Get top k (k=3 or 5) candidates for each token in classification result.
+
+![ARCHITECTURE_1][architecture_1]
+
+[architecture_1]: images/architecture_1.png
+
+We apply a language model for error detection and correction:
+* Model: training pretrained-model `MacBERT` with Nom embeddings.
+* Masking strategy: we mask random character with character that look similar (both characters appear in luc-van-tien)
+
+![ARCHITECTURE_2][architecture_2]
+
+[architecture_2]: images/architecture_2.png
+
 ## Data
 We use character dataset, TKH-MTH (MTH1000 + MTH1200 + TKH) for training and valid the performace of OCR process.
 
-YOLOv5
-* Train: MTH1200 + TKH
-* Valid: MTH1000
+`YOLOv5`
+* Train: _MTH1200 + TKH_
+* Valid: _MTH1000_
 
-ResNet
-* Train + valid: character dataset + TKH-MTH (only characters that appearing in Luc-Van-Tien)
+`ResNet101`
+* Train + valid: _character dataset + TKH-MTH (only characters that appearing in Luc-Van-Tien)_
 
-About language model, we use following txt file: 
-* Train: tale-of-kieu-1870, ngoc-kieu-le-tan-truyen, ho-xuan-huong, gia-huan-ca, chinh-phu-ngam-khuc-nlvnpf-0059, buon-hoa-tan-truyen-2, bai-ca-ran-co-bac
-* Valid:  tale-of-kieu-1902, luc-van-tien-nlvnpf-0059
+About `language model`, we use following txt file: 
+* Train: _tale-of-kieu-1870, ngoc-kieu-le-tan-truyen, ho-xuan-huong, gia-huan-ca, chinh-phu-ngam-khuc-nlvnpf-0059, buon-hoa-tan-truyen-2, bai-ca-ran-co-bac_
+* Valid:  _tale-of-kieu-1902, luc-van-tien-nlvnpf-0059_
 
 Luc-Van-Tien dataset is used for testing. **The number of labels in Luc Van Tien is 2010; we have 1902 of them, accounting for approximately 93% of the characters in Luc Van Tien.**
 
@@ -43,24 +63,6 @@ character dataset
 ```
 
 _Except for the Han dataset (TKH-MTH), all datasets are private._
-
-## Model Architecture
-
-OCR: `YOLOv5` + `Resner101`
-
-Get top k (k=3 or 5) candidate for each token
-
-![ARCHITECTURE_1][architecture_1]
-
-[architecture_1]: images/architecture_1.png
-
-We then apply a language model for error detection and correction:
-* Model: training pretrained-model `MacBERT` with Nom embeddings.
-* Masking strategy: we mask random character with character that look similar (both characters appear in luc-van-tien)
-
-![ARCHITECTURE_2][architecture_2]
-
-[architecture_2]: images/architecture_2.png
 
 ## Performance
 
